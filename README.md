@@ -373,3 +373,52 @@ Para abordar los requisitos mencionados en la arquitectura de la solución utili
    - Spring Batch: Utilizar Spring Batch para procesar archivos cargados con regularidad desde dispositivos móviles de usuarios. Puede configurar trabajos de Spring Batch para procesar estos archivos de manera eficiente.
 
 En resumen, Spring ofrece una amplia gama de proyectos y herramientas que pueden adaptarse a los requisitos específicos de Space Games para su nuevo juego. La selección de proyectos dependerá de la infraestructura existente, las preferencias tecnológicas y las necesidades precisas de la aplicación.
+
+
+A continuación se indican una serie de requisitos, explique cuáles serían los proyectos de Java Spring que utilizaría en la arquitectura de la solución para enfrentarse a estos requisitos. Pueden existir varias soluciones distintas para varios requisitos. Siempre es una buena idea razonar el porqué de la decisión.
+
+# Ejercicio FINAL
+
+Estos son los requisitos:
+
+**Requisitos generales para la arquitectura de juegos en línea:**
+
+1. Escalar dinámicamente hacia arriba o hacia abajo según el nivel de actividad de los jugadores.
+
+   *Solución:* Puedes utilizar **Spring Cloud** para la gestión de escalabilidad y **Spring Boot** para crear servicios escalables que puedan aumentar o disminuir según la demanda. Además, **Spring Cloud Netflix Eureka** para el descubrimiento de servicios y **Spring Cloud Config** para la configuración dinámica.
+
+2. Conexión a un servicio de base de datos transaccional para administrar los perfiles de usuario y el estado del juego.
+
+   *Solución:* Utiliza **Spring Data JPA** para la capa de acceso a datos y **Spring Boot** para crear servicios que interactúen con la base de datos transaccional.
+
+3. Almacenar la actividad del juego en un servicio de base de datos de series temporales para análisis futuros.
+
+   *Solución:* Para el almacenamiento de series temporales, puedes considerar utilizar una base de datos NoSQL como **InfluxDB** junto con **Spring Data InfluxDB**.
+
+4. A medida que el sistema va escalando, asegurarse de que los datos no se pierdan debido a los atrasos de procesamiento.
+
+   *Solución:* Implementa colas de mensajes con **Spring Integration** y **Spring AMQP** para asegurarte de que los datos no se pierdan durante el procesamiento.
+
+**Requisitos para la plataforma de análisis de datos de los juegos:**
+
+1. Escalar dinámicamente hacia arriba o hacia abajo según el nivel de actividad del juego.
+
+   *Solución:* Continúa utilizando **Spring Cloud** para gestionar la escalabilidad de la plataforma de análisis.
+
+2. Procesar los datos entrantes sobre la marcha directamente desde los servidores del juego.
+
+   *Solución:* Usa **Spring Integration** para procesar los datos en tiempo real a medida que llegan desde los servidores del juego.
+
+3. Procesar datos que llegan tarde debido a redes móviles lentas.
+
+   *Solución:* Implementa una capa de procesamiento por lotes con **Spring Batch** para manejar datos que llegan tarde debido a la latencia de la red.
+
+4. Permitir que las consultas accedan al menos a 10 TB de datos históricos.
+
+   *Solución:* Considera el uso de **Spring Data Elasticsearch** o **Spring Data Hadoop** para gestionar grandes volúmenes de datos históricos.
+
+5. Procesar archivos que se cargan con regularidad en los dispositivos móviles de los usuarios.
+
+   *Solución:* Utiliza **Spring Integration** para gestionar la carga de archivos desde dispositivos móviles y su procesamiento posterior.
+
+Estas son algunas de las soluciones de proyectos de Java Spring que podrías considerar para abordar los requisitos especificados. La elección de las tecnologías y proyectos específicos puede depender de las necesidades y restricciones exactas de tu sistema.
